@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# RAG Web Application
 
-## Getting Started
+A lightweight **Retrieval-Augmented Generation (RAG)** application built with **Next.js 16** and **LangChain**. This tool allows you to extract content from any website (via URL) and have an interactive conversation with that content using OpenAI's GPT models.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **URL Ingestion**: Scrape and process text content from any public URL using Cheerio and Langchain loaders.
+- **Smart Chunking**: Automatically splits content into manageable chunks for efficient processing.
+- **Vector Search**: Uses OpenAI Embeddings and an in-memory vector store to retrieve relevant context.
+- **Interactive Chat**: A simple chat interface to ask questions based *specifically* on the ingested content.
+- **Modern UI**: Built with React 19 and Tailwind CSS v4.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router, Server Actions)
+- **AI & Logic**: [LangChain](https://js.langchain.com/)
+- **LLM Engine**: OpenAI (GPT-4o-mini, Embeddings)
+- **Styling**: Tailwind CSS
+- **Vector Store**: In-Memory (Ephemeral)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📋 Prerequisites
 
-## Learn More
+Before you begin, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (v18 or higher)
+- npm, yarn, or pnpm
+- A valid **OpenAI API Key**
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Configuration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1.  **Clone the repository** (if you haven't already):
+    ```bash
+    git clone <your-repo-url>
+    cd rag-web
+    ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    # or
+    yarn install
+    # or
+    pnpm install
+    ```
 
-## Deploy on Vercel
+3.  **Set up Environment Variables**:
+    Create a `.env.local` file in the root directory of your project. You can copy the structure from a sample if provided, or simply create it.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    **File:** `.env.local`
+    ```env
+    OPENAI_API_KEY="sk-..."
+    ```
+    *Replace `sk-...` with your actual OpenAI API key.*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🏃‍♂️ Usage
+
+1.  **Start the Development Server**:
+    ```bash
+    npm run dev
+    ```
+
+2.  **Open the Application**:
+    Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+3.  **How to use**:
+    - **Step 1**: Enter a URL in the input field (e.g., a Wikipedia page or a documentation page) and click **Ingest** / **Load**.
+    - **Step 2**: Wait for the confirmation message "Ingestion complete!".
+    - **Step 3**: Use the chat interface to ask questions about the page you just loaded.
+    
+    > **Note**: This application uses an *in-memory* vector store. If you restart the server, the memory will be cleared, and you will need to re-ingest your URL.
+
+## 📄 License
+
+MIT License
+
+Copyright (c) 2026 GATOUX Arthur
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
